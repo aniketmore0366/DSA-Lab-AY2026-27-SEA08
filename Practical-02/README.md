@@ -2,115 +2,136 @@
 
 ## 1. Problem Statement
 
-Design and implement a student result management system using an array of structures in C. The system should allow users to add new student records, update existing records, search for specific students, display records, and sort records based on performance metrics such as total marks or average marks. Each student record should contain roll number, name, program, course, subject marks, total marks, and average marks.
+Write a C program to manage student result records using an array of structures. The program stores student details such as name, roll number, program, subject names, subject marks, total marks, and average marks. It allows the user to create student records, display the stored records, and search for a student using their roll number.
 
 ## 2. Objectives
 
-- To understand the use of arrays and structures in C programming.
-- To implement database operations such as insertion, updating, searching, displaying, and sorting.
-- To develop logical thinking for managing structured data.
-- To simulate a real-world student result management system.
+- To understand the use of structures and arrays in C programming.
+- To store multiple student records using an array of structures.
+- To perform basic database operations such as creating, displaying, and searching student records.
+- To calculate the total and average marks of each student.
+- To understand how linear search is used to find a student record.
 
 ## 3. Concepts Used
 
-- Structures (`struct`) in C
+- Structures using `typedef struct`
 - Array of structures
-- Functions and control structures
-- Record insertion and modification
-- Linear search
-- Bubble sort
-- Calculation of total and average marks
-- String handling for student names
+- User-defined functions
+- `do-while` loop and `switch` statement
+- Input and output functions
+- Arithmetic operations
+- Linear search using a roll number
 
 ## 4. Algorithm / Approach
 
-### Step 1: Define the Structure
-1. Define a structure named `Student`.
-2. Include roll number, name, program, course, subject marks, total marks, and average marks.
+1. Start the program.
+2. Define a structure named `stud` containing the student's name, roll number, program, subject names, subject marks, total, and average.
 3. Declare an array of structures to store student records.
-4. Initialize the record count to zero.
-
-### Step 2: Insert Student Records
-1. Accept the number of student records to add.
-2. Input each student's roll number, name, program, course, and subject marks.
-3. Calculate the total marks by adding the subject marks.
-4. Calculate the average by dividing the total marks by the number of subjects.
-5. Store the record and increment the count.
-
-### Step 3: Display All Records
-1. Traverse the array from index zero to the last stored record.
-2. Display each student's details, subject marks, total, and average.
-
-### Step 4: Search for a Student
-1. Accept a roll number or name to search for.
-2. Compare the search value with each stored record.
-3. If a match is found, display the student's record.
-4. If no match is found, display an appropriate message.
-
-### Step 5: Sort Student Records
-1. Use bubble sort to compare adjacent student records.
-2. Sort records by total marks or average marks, as required.
-3. Swap records when they are in the wrong order.
-4. Display the sorted records.
-
-### Step 6: Update a Student Record
-1. Accept the roll number of the student to modify.
-2. Search for the corresponding record.
-3. If found, update the required details or marks.
-4. Recalculate total and average marks after modifying the marks.
-
-### Step 7: Append a Record
-1. Accept the details of a new student.
-2. Calculate total and average marks.
-3. Store the new record at the end of the array.
-4. Increment the record count.
+4. Display a menu with options to create, display, and search student records.
+5. For the Create operation:
+   - Accept the number of students.
+   - Input each student's details and subject marks.
+   - Calculate total marks by adding the two subject marks.
+   - Calculate average marks by dividing the total by two.
+6. For the Display operation:
+   - Traverse the array of student records.
+   - Display each student's details, total marks, and average marks.
+7. For the Search operation:
+   - Accept the roll number to search for.
+   - Compare it with the roll numbers stored in the array.
+   - Display `STUDENT FOUND` if a match exists.
+   - Otherwise, display `STUDENT NOT FOUND`.
+8. Repeat the menu while the selected option is less than 3.
+9. Stop the program.
 
 ## 5. Test Cases
 
 | Test Case | Input / Condition | Expected Result |
 |---|---|---|
-| 1 | Add a student with valid details and marks | Student record is stored with calculated total and average. |
-| 2 | Display stored student records | All stored records are displayed correctly. |
-| 3 | Search using an existing roll number or name | The matching student record is displayed. |
-| 4 | Search using a non-existing roll number or name | A record-not-found message is displayed. |
-| 5 | Sort records by total marks | Records are arranged according to total marks. |
-| 6 | Update marks for an existing student | Marks, total, and average are updated correctly. |
-| 7 | Attempt to add records beyond the array capacity | The program should prevent insertion beyond the supported capacity if validation is implemented. |
+| 1 | Create two student records | Both student records are accepted and stored. |
+| 2 | Tushar: marks 85 and 80 | Total = 165, Average = 82.50 |
+| 3 | Ashutosh: marks 35 and 36 | Total = 71, Average = 35.50 |
+| 4 | Search for roll number 6 | `STUDENT FOUND` |
+| 5 | Search for roll number 19 | `STUDENT NOT FOUND` |
+| 6 | Display after creating records | Stored student details and calculated marks are displayed. |
 
 ## 6. Sample Input and Output
 
-**Illustrative student record:**
+### Sample Input
 
 ```text
-Roll Number: 101
-Name: Aarav
-Program: BTech
-Course: DSA
-Subject Marks: 80 85 90 75 70
+Enter no. of students: 2
+
+Student 1:
+Name: Tushar
+Roll no.: 6
+Program: EnTC
+Subject 1: EC
+Subject 2: DE
+Subject 1 marks: 85
+Subject 2 marks: 80
+
+Student 2:
+Name: Ashutosh
+Roll no.: 40
+Program: EnTC
+Subject 1: EC
+Subject 2: DE
+Subject 1 marks: 35
+Subject 2 marks: 36
 ```
 
-**Expected calculated values:**
+### Sample Output
 
 ```text
-Total Marks: 400
-Average Marks: 80.00
+Student 1 Data
+Name: Tushar
+Roll no.: 6
+Program: EnTC
+Subject 1: EC
+Subject 2: DE
+Subject 1's marks: 85
+Subject 2's marks: 80
+Total: 165
+Average: 82.50
+
+Student 2 Data
+Name: Ashutosh
+Roll no.: 40
+Program: EnTC
+Subject 1: EC
+Subject 2: DE
+Subject 1's marks: 35
+Subject 2's marks: 36
+Total: 71
+Average: 35.50
 ```
 
-The above values illustrate the total and average calculation for five subject marks. The actual prompts and output format depend on the implementation.
+### Search Operation
+
+**Input:**
+```text
+Enter student's roll no. to search: 19
+```
+
+**Output:**
+```text
+STUDENT NOT FOUND
+```
 
 ## 7. Complexity Analysis
 
-- **Insertion:** O(1) per record when inserting at the next available array position, excluding input processing.
-- **Display:** O(n) for n student records.
-- **Search:** O(n) using linear search in the worst case.
-- **Sorting:** O(n²) using bubble sort in the worst case.
-- **Update:** O(n) in the worst case when a record is located using linear search.
-- **Space Complexity:** O(n) for storing n student records, with a fixed maximum capacity in an array-based implementation.
+Let `n` be the number of student records.
+
+- **Create:** O(n), because details are entered for each student.
+- **Display:** O(n), because every stored record is displayed.
+- **Search:** O(n) in the worst case, because records are checked sequentially.
+- **Space Complexity:** O(n) for storing student records, with a fixed array capacity of 20.
 
 ## 8. Conclusion
 
-This practical demonstrates how arrays of structures can be used to organize and manage student records in C. It applies insertion, display, searching, updating, and sorting operations while calculating total and average marks. It improves understanding of structured data management and basic database operations.
+This practical demonstrates the use of an array of structures to manage student result records in C. The program accepts student details, calculates total and average marks, displays records, and searches for a student using their roll number. It provides practical understanding of structured data storage, user-defined functions, and linear search.
 
 ## 9. Source Code
 
-The C program for this practical is available in [`program.c`](program.c).
+The C source code is available in [`program.c`](program.c).
